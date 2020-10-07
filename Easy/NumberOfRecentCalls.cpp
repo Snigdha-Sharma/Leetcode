@@ -1,0 +1,28 @@
+class RecentCounter 
+{
+    public:
+    
+    priority_queue<int,vector<int>,greater<int> > pq;
+    
+    RecentCounter() 
+    {
+        
+    }
+    
+    int ping(int t) 
+    {
+        if (pq.empty()==true)
+        {
+            pq.push(t);
+        }
+        else
+        {
+            pq.push(t);
+            while (pq.empty()==false && pq.top()<t-3000)
+            {
+                pq.pop();
+            }
+        }
+        return pq.size();
+    }
+};
