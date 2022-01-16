@@ -3,7 +3,8 @@ class Solution
     public:
     vector<int> findDuplicates(vector<int>& nums) 
     {
-        //Traverse the array and for each element you find go and mark its index by making the element their negative (since array contains numbers from 1 to n inclusive) so if they are neagtive then that means their index has been visited
+        //Keep marking the value at index of the number that you have seen as negative. when you are going to mark chekc if already value there was negative. 
+        //If it was it means cell was already makred before. That is that number if duplicate
         vector<int> ans;
         for (int i=0;i<nums.size();i++)
         {
@@ -13,9 +14,10 @@ class Solution
             }
             else
             {
-                nums[abs(nums[i])-1]=-nums[abs(nums[i])-1];
+               nums[abs(nums[i])-1] =-nums[abs(nums[i])-1];
             }
         }
+        
         return ans;
     }
 };

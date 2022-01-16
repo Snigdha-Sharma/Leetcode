@@ -33,3 +33,27 @@ class Solution
         return A;
     }
 };
+
+//In place solution
+class Solution 
+{
+    public:
+    vector<int> sortArrayByParityII(vector<int>& nums) 
+    {
+        int even=0,odd=1;
+        for (;even<nums.size();even+=2)
+        {
+            if (nums[even]%2==1)
+            {
+                while(nums[odd]%2==1)
+                {
+                    odd+=2;
+                }
+                int t=nums[even];
+                nums[even]=nums[odd];
+                nums[odd]=t;
+            }
+        }
+        return nums;
+    }
+};
